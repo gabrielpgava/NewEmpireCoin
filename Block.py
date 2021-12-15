@@ -13,6 +13,13 @@ class Block:
         self.signature = ''
 
 
+    @staticmethod
+    def genesis():
+        genesisBlock = Block([],'genesisHash','genesis',0)
+        genesisBlock.timestamp = 0
+        return genesisBlock
+
+
     def toJson(self):
         data = {}
         data['lastHash'] = self.lastHash
