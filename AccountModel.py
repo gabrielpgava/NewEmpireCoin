@@ -25,4 +25,4 @@ class AccountModel():
             self.addAccount(publicKeyString)
         self.balances[publicKeyString] += amount
 
-    por
+    
