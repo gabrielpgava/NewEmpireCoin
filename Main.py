@@ -11,10 +11,18 @@ from AccountModel import AccountModel
 if __name__ == "__main__":
     
     
-    wallet = Wallet()
-    accountModel = AccountModel()
+    blockchain = Blockchain()
+    pool = TransactionPool()
 
-    accountModel.updateBalace(wallet.publicKeyString(), 100)
-    accountModel.updateBalace(wallet.publicKeyString(), -10)
+    alice = Wallet()
+    bob = Wallet()
 
-    pprint.pprint(accountModel.balances)
+
+    transaction = alice.createTransaction(bob.publicKeyString(),5, 'TRANSFER')
+
+    if not pool.transactionExists(transaction):
+        pool.addTransaction(transaction)
+
+    coveredTransactions = blockchain.gerCoveredTransactionsSet(pool.transactions)
+
+    print(coveredTransactions)
